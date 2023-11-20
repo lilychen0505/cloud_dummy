@@ -31,7 +31,7 @@ pipeline {
 
         stage('Results') {
             steps {
-                echo 'View SonarQube analysis results: http://35.237.76.192:9000/projects'
+                echo 'View SonarQube analysis results: http://35.237.243.128:9000/projects'
             }
         }
     }
