@@ -18,12 +18,17 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonarqube-9.9.2') {
                     script {
-                        def sonarScannerHome = tool 'SonarQubeScanner';
-                        sh "${sonarScannerHome}/bin/sonar-scanner"
+                        def sonarScannerHome = tool 'SonarQubeScanner'
+                        sh """
+                            ${sonarScannerHome}/bin/sonar-scanner \
+                            -Dsonar.login=admin \
+                            -Dsonar.password=admin
+                        """
                     }
                 }
             }
         }
+
         stage('Results') {
             steps {
                 echo 'View SonarQube analysis results: http://35.237.76.192:9000/projects'
